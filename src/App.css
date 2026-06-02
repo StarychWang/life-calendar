@@ -1,0 +1,85 @@
+/* ---- Title Decoration (custom animation) ---- */
+.title-deco {
+  color: #fff176;
+  font-size: 1.4rem;
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.6; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+
+/* ---- Card Override (dashed border) ---- */
+.life-card.ant-card {
+  border: 2px dashed #e0d5c0;
+}
+.life-card.ant-card:hover {
+  box-shadow: 0 6px 20px rgba(93, 78, 55, 0.25);
+}
+
+/* ---- Life Grid (CSS Grid auto-fill, groups of 12) ---- */
+.life-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 142px);
+  gap: 6px;
+  justify-content: center;
+}
+
+.year-group {
+  display: flex;
+  gap: 2px;
+}
+
+.grid-cell {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.grid-cell:hover {
+  transform: scale(1.6);
+  z-index: 1;
+  box-shadow: 0 0 6px rgba(102, 187, 106, 0.5);
+}
+
+.cell-lived {
+  background: var(--past-color);
+}
+
+.cell-remaining {
+  background: var(--future-color);
+}
+
+.cell-current {
+  background: #ef5350;
+  animation: gentle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 83, 80, 0);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 6px 2px rgba(239, 83, 80, 0.45);
+    opacity: 0.8;
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .life-grid {
+    grid-template-columns: repeat(auto-fill, 97px);
+    gap: 4px;
+  }
+  .year-group {
+    gap: 1.5px;
+  }
+  .grid-cell {
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+  }
+}
